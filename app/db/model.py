@@ -4,6 +4,7 @@ import datetime
 from google.appengine.ext import db
 
 class DocumentModel(db.Model):
-  url     = db.StringProperty()
-  created = db.DateProperty()
-  text    = db.Blob()
+  created   = db.DateTimeProperty()
+  processed = db.DateTimeProperty()
+  url       = db.StringProperty()
+  text      = db.Blob()

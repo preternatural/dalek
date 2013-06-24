@@ -12,7 +12,9 @@ $(function() {
   });
 
   var actionHandler = new ActionHandler('/action', function() {
-    queryHandler.query();
+    setTimeout(function() {
+      queryHandler.query();      
+    }, 500); // Wait for update.
   });
 
   var queryForm = new QueryForm($('#query'), queryHandler);
@@ -36,6 +38,7 @@ QueryHandler = function(url, callback) {
 QueryHandler.prototype.query = function() {
   var self = this;
 
+  console.log('query...');
   $.ajax({
     url: self._url,
   }).done(function(data) {
@@ -90,11 +93,14 @@ ActionForm = function(form, handler) {
   var self = this;
   
   form.submit(function(event) {
-    var url = $(event.target['url']).val();
-    if (url) {
+    var input = $(event.target['url']);
+    var url = input.val();
+    if (!url || !Util.validateURL(url)) {
+      input.focus();
+    } else {
       handler.insert(url, function() {
-        form[0].reset();        
-      });
+        form[0].reset();
+      });        
     }
 
     return false; // Prevent submit.
@@ -116,4 +122,20 @@ Template.prototype.refresh = function(data) {
 
   self._container.empty().append(self._template);
   jstProcess(new JsEvalContext(data), self._template);
+};
+
+/**
+ * Utils.
+ */
+Util = function() {}
+
+Util.format = function(date, c) {
+  var iso = new Date(date).toISOString();
+  return iso.slice(0, 10) + " " + iso.slice(11, 19);
+};
+
+Util.URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[.\!\/\\w]*))?)/;
+
+Util.validateURL = function(url) {
+  return Util.URL_REGEX.test(url);
 };
