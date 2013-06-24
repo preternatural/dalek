@@ -1,5 +1,6 @@
 dalek
 =====
 
-Next-Gen Search.
+Launch with GoogleAppEngineLauncher
+https://developers.google.com/appengine/downloads
 
