@@ -1,0 +1,44 @@
+
+* {
+  font-family: 'Helvetica', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #00008b;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: x-large;
+}
+h2 {
+  margin: 0;
+  font-size: large;
+  padding: 0.5em;  
+  background-color: lightcoral;
+}
+
+body.center {
+  background: lightgray;
+  width: 800px;
+  margin: auto;
+}
+
+.section {
+  background-color: white;
+  margin-bottom: 1em;
+}
+.section > div { 
+  padding: 0.5em;
+}
+
+#results {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#form_url {
+  width: 300px;
+}

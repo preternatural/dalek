@@ -6,14 +6,63 @@
 
   <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+  <!-- JSTemplate -->
+  <script type="text/javascript" charset="utf-8" src="/js/jstemplate/util.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/jstemplate/jsevalcontext.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/jstemplate/jstemplate.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="/js/jquery/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/app.js"></script>
+
 </head>
 
 <body class="center">
-  <div class="container">
-    <h1>Admin</h1>
-    <ul>
-      <li><a href="https://appengine.google.com/dashboard?&app_id=s~dalek-zero">Dashboard</a></li>
-    </ul>
+  <h1>Dalek Zero</h1>
+  
+  <div class="section">
+    <h2>Admin</h1>
+    <div>
+      <ul>
+        {% if dev %}
+        <li><a href="http://localhost:8000">Dev Console Dashboard</a></li>
+        {% endif %}
+
+        <li><a href="https://appengine.google.com/dashboard?&app_id=s~dalek-zero">App Engine Dashboard</a></li>
+        <li><a href="https://github.com/preternatural/dalek">GitHub Repository</a></li>
+        <li><a href="https://docs.google.com/document/d/1pw1IHl43aKhvwcRbqXbqeDke4tS1TPq3chIPv1cugAY/edit">Design Doc</a></li>
+      </ul>
+    </div>    
+  </div>
+
+  <div class="section">
+    <h2>Documents</h2>
+    <div>
+      <div>
+        <button id="query">Refresh</button>
+        <div id="results"></div>
+      </div>
+
+      <!-- TODO(burdon): Convert to AJAX post -->
+      <div>
+  	    <form id="action" method="post" accept-charset="utf-8">
+   	      <label for="form_url"></label>
+          <input type="text" id="form_url" name="url" value="" autocomplete="off">
+  	      <input type="submit" value="Add">
+  	    </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="status">{{ status }}</div>
+  
+  <!-- Templates -->
+  <div style="display:none">    
+    <div id="template_documents">
+      <div jsselect="item">
+        <div jscontent="url"></div>
+      <div>
+    </div>    
   </div>
 </body>
 </html>
