@@ -60,6 +60,8 @@ body.center {
   width: 150px;
 }
 .documents .item .col3 {
+  width: 450px;
+  overflow: hidden;
 }
 
 .timestamp {
@@ -71,4 +73,5 @@ body.center {
   color: darkblue;
   font-size: medium;
   white-space: nowrap;
+  text-overflow: ellipses;
 }
