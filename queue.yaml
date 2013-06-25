@@ -1,0 +1,5 @@
+queue:
+- name: fetch
+  rate: 5/s
+- name: extract
+  rate: 5/s

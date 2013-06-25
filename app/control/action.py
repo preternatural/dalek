@@ -1,5 +1,7 @@
-# (C) 2013 Dalek Labs
+"""ActionHandler for submitting a url.
 
+   (C) 2013 Dalek Labs
+"""
 import cgi
 import datetime
 import logging
@@ -7,6 +9,7 @@ import webapp2
 
 import app.db.model
 
+from google.appengine.api import taskqueue
 from google.appengine.ext import db
 
 #
@@ -19,4 +22,5 @@ class ActionHandler(webapp2.RequestHandler):
       created = datetime.datetime.now(),
       )
     db.put(document);
-    logging.info('Created: [%s]' % (document.url))
+    taskqueue.add(url='/fetch', params={'url': document.url})
+    logging.info('Created: [%s]' % document.url)

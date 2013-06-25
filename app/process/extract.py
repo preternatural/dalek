@@ -1,9 +1,9 @@
 """Extract named entities from a doc at a url.
 
-   Jeff Reynar, 2013
+   (C) 2013 Dalek Labs
 """
-from entities import EntityExtractor
-from fetcher import Fetcher
+from app.process.entities import EntityExtractor
+from app.process.fetcher import Fetcher
 
 
 def main():

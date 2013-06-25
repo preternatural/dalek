@@ -1,8 +1,6 @@
 """Fetch web pages using Diffbot to remove boilerplate.
 
-   Diffbot endpoint: http://www.diffbot.com/api/article?token=...&url=...
-
-   Jeff Reynar, 2013
+   (C) 2013 Dalek Labs
 """
 from urllib2 import urlopen
 
@@ -15,5 +13,7 @@ class Fetcher(object):
 
     def fetch_text_from_url(self, url):
         # Todo(jeff): escape url?
+        # Todo(jeff): handle the structure returned by diffbot (see
+        # http://www.diffbot.com/dev/docs/)
         response = urlopen(self.diffbot_url + url)
         return response.read()
