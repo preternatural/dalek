@@ -42,3 +42,36 @@ body.center {
 #form_url {
   width: 300px;
 }
+
+/*
+ * Tempaltes.
+ */
+.documents {
+}
+.documents .item {
+}
+.documents .item > div {
+  display: inline-block;
+}
+.documents .item .col1 {
+  width: 150px;
+}
+.documents .item .col2 {
+  width: 150px;
+}
+.documents .item .col3 {
+  width: 450px;
+  overflow: hidden;
+}
+
+.timestamp {
+  color: darkgray;
+  font-size: small;
+  white-space: nowrap;
+}
+.url {
+  color: darkblue;
+  font-size: medium;
+  white-space: nowrap;
+  text-overflow: ellipses;
+}

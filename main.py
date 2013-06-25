@@ -18,7 +18,7 @@ class MainHandler(webapp2.RequestHandler):
   def get(self):
     context = {
       'dev': os.environ['SERVER_SOFTWARE'].find('Development') == 0,
-      'status' : datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+      'status': datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
     }
     template = os.path.join(os.path.dirname(__file__), 'template/index.html')
     self.response.out.write(render(template, context))
@@ -33,4 +33,3 @@ app = webapp2.WSGIApplication(
   ('/', 		  MainHandler),
   ],
   debug=True)
-

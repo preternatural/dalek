@@ -1,8 +1,10 @@
 # (C) 2013 Dalek Labs
 
 import cgi
+import datetime
 import logging
 import webapp2
+
 import app.db.model
 
 from google.appengine.ext import db
@@ -12,6 +14,9 @@ from google.appengine.ext import db
 #
 class ActionHandler(webapp2.RequestHandler):
   def post(self):
-    document = app.db.model.DocumentModel(url = cgi.escape(self.request.get('url')))
+    document = app.db.model.DocumentModel(
+      url = cgi.escape(self.request.get('url')), 
+      created = datetime.datetime.now(),
+      )
     db.put(document);
     logging.info('Created: [%s]' % (document.url))
